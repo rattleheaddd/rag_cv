@@ -15,13 +15,15 @@ class InMemoryRetriever:
         scores = self.embeddings @ query_embedding
         k = min(k, len(self.chunks))
         values, indices = torch.topk(scores, k)
-        cosine_similarities = []
+        results = []
 
         for value, ind in zip(values, indices):
-            cosine_similarities.append({
+            ind = ind.item()
+            results.append({
                 "similarity": value.item(),
                 "page": self.chunks[ind]["page"],
-                "text": self.chunks[ind]["text"]
+                "text": self.chunks[ind]["text"],
+                "chunk_id": ind
             })
 
-        return cosine_similarities
+        return results

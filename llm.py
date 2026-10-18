@@ -56,9 +56,3 @@ class LocalModel:
         response = requests.post(url=self.url, json=payload, timeout=120)
         response.raise_for_status()
         return response.json()["message"]["content"]
-
-if __name__ == "__main__":
-    context = "[Source 1 | Page 1]\n" \
-              "В Екатеринбурге солнечно, а в Москве пасмурно."
-    llm = LocalModel(model="qwen3:4b-instruct")
-    print(llm.generate_answer(context=context, question="Какая погода в москве?"))
