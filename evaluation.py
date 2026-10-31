@@ -40,19 +40,9 @@ def evaluate(test_cases: list[dict], k: int = 3) -> dict:
 
 
 if __name__ == "__main__":
-    test_cases = [
-        {
-            "retrieved_ids": [2, 1, 0],
-            "relevant_ids": [1, 2]
-        },
-        {
-            "retrieved_ids": [0, 2, 1],
-            "relevant_ids": [1, 2]
-        },
-        {
-            "retrieved_ids": [0, 3, 4],
-            "relevant_ids": [1, 2]
-        }
-    ]
+    test_case_1 = {
+        "question": "Which datasets are used for document layout analysis?",
+        "relevant_ids": [24, 25, 83, 84]
+    }
 
-    print(evaluate(test_cases, k=3))
+    
