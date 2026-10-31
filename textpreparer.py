@@ -20,7 +20,7 @@ class TextPreparer:
             token_ids = self.tokenizer.encode(page["text"], add_special_tokens=False, truncation=False)
             begin = 0
             while begin < len(token_ids):
-                chunk = {"page": page["page"], 
+                chunk = {"page": page["page"],
                          "text": self.tokenizer.decode(token_ids[begin: begin + self.chunk_size])}
                 chunks.append(chunk)
                 if begin + self.chunk_size >= len(token_ids):
