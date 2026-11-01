@@ -35,21 +35,3 @@ class BM25Retriever:
                 })
 
         return results
-
-# if __name__ == "__main__":
-    # from textpreparer import TextPreparer
-#     questions = [
-#         "What is LayoutLM?",
-#         "Which datasets are used for document layout analysis?",
-#         "How are graph neural networks applied to document understanding?"
-#     ]
-
-#     for question in questions:
-#         model = AutoModel.from_pretrained("intfloat/multilingual-e5-small", device_map="cuda", local_files_only=True)
-#         tokenizer = AutoTokenizer.from_pretrained("intfloat/multilingual-e5-small", local_files_only=True)
-#         prep = TextPreparer(tokenizer=tokenizer, chunk_size=128, overlap=32)
-#         chunks = prep.prepare("docs/document.pdf")
-#         embed = E5Embedder(model=model, tokenizer=tokenizer, batch_size=16)
-#         chunk_embeddings = embed.embed_chunks(chunks=chunks)
-#         retriever = InMemoryRetriever(chunks=chunks, embeddings=chunk_embeddings)
-#         llm = LocalModel(model="qwen3:4b-instruct")

@@ -1,0 +1,332 @@
+[
+  {
+    "question": "What is LayoutLM and how does it work?",
+    "retrieved_ids": [
+      123,
+      122,
+      44,
+      34,
+      149
+    ],
+    "answer": "LayoutLM is a general pre-trained model for Document AI that jointly pre-trains text and layout information to improve document understanding [Source 2, Page 13]. It works by integrating 2-D layout and text embeddings into a Transformer architecture, allowing the model to understand both linguistic and visual structures of documents [Source 4, Page 5]. Specifically, LayoutLM retains 2-D position embeddings and other text embeddings while masking some input tokens, then trains to predict these masked tokens based on context, thus bridging the gap between visual and language modalities [Source 3, Page 6]. This joint pre-training enables the model to achieve better performance in various document understanding tasks [Source 1, Page 13]."
+  },
+  {
+    "question": "How are graph neural networks used in document understanding?",
+    "retrieved_ids": [
+      106,
+      13,
+      12,
+      47,
+      206
+    ],
+    "answer": "Graph Neural Networks (GNNs) are used in document understanding by modeling text fragments in a document as nodes in a graph, with the relationships between these text fragments represented as edges. This allows the entire document to be represented as a graph network, enabling effective representation and understanding of the structure and content of visually-rich documents [Source 1 | Page 12]. GNNs are also applied for specific tasks such as table detection in invoice documents [Source 5 | Page 21], and contribute to downstream Document AI tasks like document layout analysis and visual information extraction [Source 3 | Page 2]."
+  },
+  {
+    "question": "Which datasets are used for document layout analysis?",
+    "retrieved_ids": [
+      24,
+      234,
+      83,
+      84,
+      188
+    ],
+    "answer": "The datasets used for document layout analysis are PubLayNet (Zhong et al., 2019b), PubTabNet (Zhong et al., 2019a), TableBank (Li et al., 2020a), DocBank (Li et al., 2020b), and IIIT-AR-13K (Mondal et al., 2020) [Source 1 | Page 4, Source 3 | Page 10, Source 4 | Page 10]."
+  },
+  {
+    "question": "What is the difference between LayoutLM and LayoutLMv2?",
+    "retrieved_ids": [
+      124,
+      123,
+      227,
+      122,
+      145
+    ],
+    "answer": "LayoutLM does not integrate document visual information in the pre-training process, which limits its accuracy on tasks requiring strong visual perception, such as DocVQA [Source 2, Page 13]. In contrast, LayoutLMv2 integrates visual information (such as layout and visual elements) into the pre-training process, significantly improving visual understanding capability through joint pre-training of text, layout, and visual information [Source 1, Page 13; Source 2, Page 13; Source 4, Page 13]. This allows LayoutLMv2 to achieve better cross-modal alignment and performance in visually-rich document understanding [Source 3, Page 23]."
+  },
+  {
+    "question": "How is OCR used in document information extraction?",
+    "retrieved_ids": [
+      49,
+      132,
+      11,
+      97,
+      178
+    ],
+    "answer": "OCR is used in document information extraction to recognize the textual content from visually-rich documents, such as scanned images or PDFs. After identifying semantic units in the document through object detection, OCR is applied to extract the textual information from the identified image regions [Source 2, Page 14]. This textual content is then used in conjunction with other document features to support downstream tasks like question answering or information extraction [Source 3, Page 2]."
+  },
+  {
+    "question": "What are the two main subtasks of document layout analysis?",
+    "retrieved_ids": [
+      83,
+      82,
+      89,
+      48,
+      17
+    ],
+    "answer": "The two main subtasks of document layout analysis are visual analysis and semantic analysis [Source 1, Page 10; Source 2, Page 10]."
+  },
+  {
+    "question": "What is visual information extraction in Document AI?",
+    "retrieved_ids": [
+      97,
+      48,
+      9,
+      17,
+      1
+    ],
+    "answer": "Visual information extraction in Document AI refers to the technology of extracting semantic entities and their relationships from a large number of unstructured visually-rich documents. It involves techniques that go beyond traditional text-based information extraction by considering the two-dimensional spatial arrangement of text, tables, images, and other elements within a document layout. This process enables the identification and understanding of key entities and their interrelationships in visually complex documents [Source 2, Page 6]."
+  },
+  {
+    "question": "What is document image classification?",
+    "retrieved_ids": [
+      109,
+      50,
+      110,
+      45,
+      111
+    ],
+    "answer": "Document image classification refers to the task of analyzing and identifying document images, while classifying them into different categories such as scientific papers, resumes, invoices, receipts, and many others [Source 2, Page 6]. It is an essential component for business digitalization and involves categorizing document images into predefined classes [Source 1, Page 12]."
+  },
+  {
+    "question": "What is document visual question answering?",
+    "retrieved_ids": [
+      113,
+      117,
+      49,
+      17,
+      55
+    ],
+    "answer": "Document Visual Question Answering (VQA) is a high-level understanding task for document images. Specifically, given a document image and a related question, the model needs to give the correct answer to the question based on the given image [Source 1 | Page 12]."
+  },
+  {
+    "question": "What is the PubLayNet dataset and how was it constructed?",
+    "retrieved_ids": [
+      83,
+      234,
+      24,
+      84,
+      233
+    ],
+    "answer": "PubLayNet is a large-scale document layout analysis dataset that includes more than 360,000 document images constructed by automatically parsing PubMed XML files [Source 1 | Page 10]. It is considered one of the largest datasets ever for document layout analysis [Source 2 | Page 23]."
+  },
+  {
+    "question": "How was the DocBank dataset created?",
+    "retrieved_ids": [
+      84,
+      188,
+      187,
+      24,
+      25
+    ],
+    "answer": "The DocBank dataset was automatically built through the correspondence between PDF files and LaTeX files on the arXiv website [Source 2, Page 19]."
+  },
+  {
+    "question": "What is the purpose of the DocVQA dataset?",
+    "retrieved_ids": [
+      196,
+      115,
+      114,
+      117,
+      55
+    ],
+    "answer": "The purpose of the DocVQA dataset is to provide a benchmark for Visual Question Answering (VQA) on document images. It contains more than 12,000 documents and corresponding 5,000 questions, where given a document image and a related question, the model needs to give the correct answer based on the image [Source 3, Page 12]. Additionally, it is noted that the answers in DocVQA are relatively short and topics are not diverse [Source 2, Page 12]. The dataset is used to evaluate models that can understand both visual and textual content in documents, with textual information obtained via OCR playing a key role [Source 2, Page 12]."
+  },
+  {
+    "question": "What is the difference between visual and semantic layout analysis?",
+    "retrieved_ids": [
+      83,
+      82,
+      86,
+      17,
+      26
+    ],
+    "answer": "The difference between visual and semantic layout analysis is that visual analysis detects the structure of the document and determines the boundaries of similar regions, while semantic analysis identifies specific document elements such as headings, paragraphs, tables, etc., for the detected areas [Source 1, Page 10]."
+  },
+  {
+    "question": "How does LayoutLM incorporate two-dimensional positional information?",
+    "retrieved_ids": [
+      44,
+      39,
+      34,
+      43,
+      124
+    ],
+    "answer": "LayoutLM incorporates two-dimensional positional information by adding a 2-D position embedding layer in its architecture. This embedding layer captures the spatial layout of text elements within a document, such as their position on a page (e.g., top-left, bottom-right), and integrates this information with text embeddings during the pre-training process [Source 2 | Page 5]. The model uses this 2-D position information to better understand the structure and layout of documents, thereby bridging the gap between visual and linguistic modalities [Source 1 | Page 6]."
+  },
+  {
+    "question": "What is masked visual-language modeling?",
+    "retrieved_ids": [
+      43,
+      136,
+      125,
+      135,
+      44
+    ],
+    "answer": "Masked visual-language modeling (MVLM) is a self-supervised pre-training task where some of the input tokens are randomly masked, while the 2-D position embeddings and other text embeddings are retained. The model is then trained to predict the masked tokens based on the context, thereby learning language representations using both text and visual cues, including 2-D position information. This approach helps bridge the gap between visual and language modalities [Source 1, Page 6]."
+  },
+  {
+    "question": "How does spatial-aware self-attention work in LayoutLMv2?",
+    "retrieved_ids": [
+      124,
+      35,
+      130,
+      123,
+      122
+    ],
+    "answer": "В предоставленном контексте недостаточно информации для ответа."
+  },
+  {
+    "question": "How are CNNs applied to document layout analysis?",
+    "retrieved_ids": [
+      85,
+      23,
+      87,
+      12,
+      22
+    ],
+    "answer": "Convolutional Neural Networks (CNNs) are applied to document layout analysis in several ways:  \n- As a method for pixel-level segmentation, where CNNs classify each pixel to identify layout elements such as headings, paragraphs, tables, figures, and charts [Source 5, Page 3].  \n- In object detection tasks, where CNNs detect and recognize basic document units like tables, using models such as Faster R-CNN [Source 2, Page 3; Source 5, Page 3].  \n- In page segmentation of handwritten historical documents, using CNN-based methods [Source 3, Page 10].  \n- In lightweight models that use one-dimensional image information for inference, achieving higher accuracy than models using two-dimensional information [Source 3, Page 10].  \n- In multi-task pixel-by-pixel prediction models, where CNNs perform predictions at the pixel level for various document analysis tasks [Source 3, Page 10].  \n- In fully convolutional neural networks (FCNs) for high-performance historical document segmentation [Source 3, Page 10].  \n\nAdditionally, large-scale deep neural networks pre-trained and fine-tuned with CNNs are used to perform downstream Document AI tasks including document layout analysis [Source 4, Page 2]."
+  },
+  {
+    "question": "How are OCR text blocks converted into a graph?",
+    "retrieved_ids": [
+      27,
+      28,
+      40,
+      106,
+      115
+    ],
+    "answer": "OCR text blocks are converted into a graph by considering each text block as a node in a fully connected directed graph, where each node is connected to all other nodes [Source 1 | Page 4]. The initial features of the nodes are derived from the text content using Bi-LSTM encoding, and the initial features of the edges are based on the relative distance and aspect ratio between neighboring text blocks [Source 2 | Page 4]. Additionally, the coordinates of text blocks are obtained via OCR, converted into virtual coordinates, and used to compute representations for the x, y, w, and other embedding sub-layers [Source 3 | Page 5]. This structure allows the document to be represented as a graph network, with text fragments as nodes and their relationships as edges [Source 4 | Page 12]."
+  },
+  {
+    "question": "How do graph convolutional networks improve information extraction?",
+    "retrieved_ids": [
+      108,
+      232,
+      29,
+      102,
+      107
+    ],
+    "answer": "Graph Convolutional Networks (GCN) improve information extraction by modeling the text layout or document structure as a graph, enabling the network to capture relationships between different text elements [Source 1 | Page 12]. Unlike traditional models that operate on isolated nodes, GCNs perform convolution on \"node-edge-node\" ternary feature sets, focusing on individual–relationship–individual patterns, which enhances the representation of information [Source 3 | Page 4]. Additionally, the integration of self-attention mechanisms allows the network to identify and aggregate important features from directed triads in fully connected graphs, improving the selection of significant information [Source 3 | Page 4]. These approaches enable more effective extraction of structured information, especially in visually rich documents [Source 5 | Page 12]."
+  },
+  {
+    "question": "What role do Transformer architectures play in Document AI?",
+    "retrieved_ids": [
+      13,
+      12,
+      18,
+      35,
+      19
+    ],
+    "answer": "Transformer architectures play a major role in Document AI by enabling effective processing of text and visual information, particularly in multimodal pre-training. They help capture rich semantic relationships in document layouts and improve performance on non-fixed layout data through the self-attention mechanism. Additionally, Transformers are part of the pre-training and fine-tuning paradigm that has significantly advanced Document AI tasks such as document layout analysis, visual information extraction, and document visual question answering [Source 2 | Page 2, Source 4 | Page 5]."
+  },
+  {
+    "question": "How is multimodal information incorporated into document pre-training?",
+    "retrieved_ids": [
+      230,
+      141,
+      135,
+      118,
+      225
+    ],
+    "answer": "Multimodal information is incorporated into document pre-training by combining image and text inputs through shared representations, using position information to align different modalities, and designing pre-training tasks that involve both visual and textual features [Source 3 | Page 14]. Specifically, position information is added to both image and text inputs and passed separately to Transformer layers, enabling better cross-modal relationships [Source 3 | Page 14]. Additionally, models use multimodal pre-training tasks such as masked visual-language prediction and image reconstruction, which require deep fusion of text and image features to strengthen modality interaction [Source 2 | Page 15]. These approaches allow for joint learning of visual and textual content, improving document understanding [Source 2 | Page 15]."
+  },
+  {
+    "question": "What pre-training objectives are used in LayoutLMv2?",
+    "retrieved_ids": [
+      125,
+      123,
+      124,
+      227,
+      122
+    ],
+    "answer": "LayoutLMv2 proposes “Text-Image Alignment” and “Text-Image Matching” tasks in addition to Masked Visual-Language Modeling as its pre-training objectives [Source 1 | Page 14]."
+  },
+  {
+    "question": "How does document visual question answering differ from traditional VQA?",
+    "retrieved_ids": [
+      115,
+      113,
+      117,
+      12,
+      55
+    ],
+    "answer": "Document visual question answering differs from traditional VQA in that textual information in document VQA plays a key role, and the answers often rely on the document's text content rather than just visual features. Unlike traditional VQA, where answers are typically derived solely from visual content, document VQA requires the model to use both visual features and extracted text (via OCR) to answer questions, with the textual information being essential for understanding and retrieving answers [Source 1 | Page 12]. Additionally, document VQA is modeled as a Machine Reading Comprehension (MRC) problem, where the model extracts text fragments from the document to form answers, whereas traditional VQA does not emphasize such text-based reasoning [Source 3 | Page 13]."
+  },
+  {
+    "question": "Why is document layout information important in addition to text?",
+    "retrieved_ids": [
+      49,
+      37,
+      121,
+      35,
+      48
+    ],
+    "answer": "Document layout information is important in addition to text because it provides rich semantic information that is naturally aligned with the text, helping to understand the structure and relationships within visually-rich documents. For instance, layout information can indicate the position and arrangement of text blocks, which often contain meaningful contextual cues (e.g., forms displayed in specific layouts). This layout invariance across different document types is critical for general-purpose pre-training and enhances downstream tasks by offering deeper contextual understanding beyond just the textual content [Source 2, Page 5]. Additionally, layout information contributes to the overall document structure, enabling better interpretation of content, especially in forms where key-value pairs are positioned in specific ways [Source 2, Page 5]. Furthermore, the spatial relationships among text blocks contain significant semantic information, making layout a vital component in document understanding [Source 4, Page 5]."
+  },
+  {
+    "question": "What are the limitations of traditional document information extraction methods?",
+    "retrieved_ids": [
+      119,
+      26,
+      25,
+      118,
+      48
+    ],
+    "answer": "The limitations of traditional document information extraction methods are:\n\n1) Traditional information extraction focuses on extracting entity and relationship information from plain text, while less research has been done on visually rich documents [Source 2, Page 4].  \n2) Visually rich documents involve semantic structures that are determined not only by text content but also by visual elements such as layout, typesetting, and table/figure structures, which traditional methods do not adequately handle [Source 2, Page 4].  \n3) Traditional methods are limited in their ability to process unstructured content with complex spatial arrangements, as they treat text as a one-dimensional sequence rather than a two-dimensional layout [Source 5, Page 6].  \n\nThese limitations highlight the gap between traditional NLP approaches and the needs of real-world visually rich documents."
+  },
+  {
+    "question": "How do task-specific models differ from general-purpose pre-trained models?",
+    "retrieved_ids": [
+      82,
+      120,
+      118,
+      135,
+      119
+    ],
+    "answer": "Task-specific models differ from general-purpose pre-trained models in that they typically rely on limited labeled data and use only pre-trained models from either computer vision (CV) or natural language processing (NLP), often focusing on a single modality or simple feature combinations rather than deep fusion across modalities [Source 2, Page 13]. In contrast, general-purpose pre-trained models are designed to support a variety of downstream tasks and leverage large amounts of unlabeled data through self-supervised pre-training, enabling better cross-modal relationships and broader applicability [Source 3, Page 13; Source 5, Page 13]. Additionally, general-purpose models incorporate richer pre-training tasks and align different modalities using position information to improve multimodal understanding [Source 4, Page 14]."
+  },
+  {
+    "question": "What challenges arise when processing visually rich documents?",
+    "retrieved_ids": [
+      119,
+      26,
+      101,
+      100,
+      146
+    ],
+    "answer": "One major challenge when processing visually rich documents is the reliance on limited labeled data, as human annotation is expensive and time-consuming, especially for document understanding tasks like information extraction [Source 1 | Page 13]. Additionally, while visually rich documents contain significant semantic information tied to both text and visual elements (such as layout, typesetting, and table/figure structures), traditional information extraction methods focus on plain text and have limited research on visually rich documents [Source 2 | Page 4]. Another challenge is that current research often models visual information extraction as a computer vision problem, which may overlook the importance of text features, requiring integration of text and visual representations [Source 3 | Page 11]. Furthermore, the lack of large-scale, well-annotated datasets for visually rich documents hinders effective model development [Source 4 | Page 11]."
+  },
+  {
+    "question": "How do visual features and textual features complement each other?",
+    "retrieved_ids": [
+      101,
+      104,
+      117,
+      113,
+      103
+    ],
+    "answer": "Visual features and textual features complement each other by jointly enabling more accurate and comprehensive understanding of visually-rich documents. Visual features, derived from computer vision models like CNNs, capture the spatial structure and layout of document images, such as text positions and object arrangements [Source 4 | Page 12]. Textual features, obtained through models like BERT or word2vec, provide semantic meaning and context from the document text [Source 1 | Page 11; Source 5 | Page 11]. By fusing these features—such as combining BERT-based text representations with CNN-based image features—the model achieves a richer, more contextual representation that improves information extraction and question answering performance [Source 2 | Page 11; Source 5 | Page 11]. In document visual question answering, visual features help locate relevant regions in the image, while textual features allow the model to interpret and retrieve text fragments as answers, especially when answers are embedded in the document text [Source 3 | Page 13]. This synergy between visual and textual information enhances both the precision and the semantic depth of document understanding."
+  },
+  {
+    "question": "What are the main limitations and open challenges in Document AI?",
+    "retrieved_ids": [
+      14,
+      150,
+      3,
+      17,
+      119
+    ],
+    "answer": "The main limitations and open challenges in Document AI include:\n\n1. Limitation of input length in large-scale pre-trained language models, which requires truncating documents into several parts [Source 1, Page 2].\n\n2. Uneven quality of training data, weak multi-task relevance, and difficulties in few-shot and zero-shot learning [Source 2, Page 16].\n\n3. The critical impact of OCR accuracy on downstream Document AI tasks, highlighting the need to better understand the relationship between OCR and Document AI [Source 2, Page 16].\n\n4. The need to integrate Document AI with human knowledge, especially manual document processing skills [Source 2, Page 16].\n\n5. Performance degradation due to low-quality scanned documents, crumpled paper, and random placement, requiring more data synthesis and augmentation techniques [Source 4, Page 3].\n\n6. Lack of effective leveraging of correlations between different Document AI tasks, such as visual information extraction and document visual question answering, which could be improved with multi-task learning frameworks [Source 4, Page 3].\n\n7. Reliance on limited labeled data and neglect of vast amounts of unlabeled data, especially in visually-rich documents, where self-supervised pre-training could be more effectively utilized [Source 5, Page 13]."
+  },
+  {
+    "question": "What exact GPU hardware was used to train every model discussed in the paper?",
+    "retrieved_ids": [
+      135,
+      24,
+      39,
+      18,
+      155
+    ],
+    "answer": "В предоставленном контексте недостаточно информации для ответа."
+  }
+]

@@ -67,8 +67,9 @@ if __name__ == "__main__":
     llm = LocalModel(model="qwen3:4b-instruct")
 
     model_rerank = CrossEncoder(
-        "cross-encoder/ms-marco-MiniLM-L6-v2",
+        "BAAI/bge-reranker-v2-m3",
         device="cuda",
+        max_length=512,
         local_files_only=True
     )
 
@@ -81,21 +82,21 @@ if __name__ == "__main__":
         candidates = hybrid_retriever.search(
             question,
             question_embedding,
-            k=5,
+            k=20,
             candidate_k=20
         )
 
-        # results = reranker.rerank(
-        #     question,
-        #     candidates,
-        #     k=5
-        # )
+        results = reranker.rerank(
+            question,
+            candidates,
+            k=5
+        )
 
         test_results.append({
             "question": question,
-            "retrieved_ids": [r["chunk_id"] for r in candidates],
-            "answer": llm.generate_answer(build_context(candidates), question)
+            "retrieved_ids": [r["chunk_id"] for r in results],
+            "answer": llm.generate_answer(build_context(results), question)
         })
 
-        with open("evaluation_e5_hybrid.json", "w", encoding="utf-8") as f:
+        with open("evaluation_jsons/evaluation_e5_hybrid_bge_reranked.json", "w", encoding="utf-8") as f:
             json.dump(test_results, f, ensure_ascii=False, indent=2)
