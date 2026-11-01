@@ -7,12 +7,10 @@ class CrossEncoderReranker:
             raise ValueError("k must be > 0")
         if results == []:
             return []
-
+        
         pairs = [(query, result["text"]) for result in results]
         predictions = self.model.predict(pairs)
-        
         scored_results = []
-
         for result, prediction in zip(results, predictions):
             new_result = result.copy()
             new_result["rerank_logit"] = float(prediction)

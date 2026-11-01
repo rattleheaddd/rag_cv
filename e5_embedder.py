@@ -30,7 +30,6 @@ class E5Embedder:
                 batches.append(chunks[i:i + self.batch_size])
             embeddings = []
             self.model.eval()
-            
             for batch in batches:
                 batch_texts = ["passage: " + chunk["text"] for chunk in batch]
                 inputs = self.tokenizer(
@@ -41,7 +40,7 @@ class E5Embedder:
                     max_length=512
                 ).to(self.device)
                 embedding = normalize_embedding(self.mean_pooling(inputs))
-                embeddings.append(embedding.cpu())
+                embeddings.append(embedding.float())
 
             return torch.cat(embeddings, dim=0)
 
@@ -60,4 +59,4 @@ class E5Embedder:
             
             embedding = normalize_embedding(self.mean_pooling(inputs)).squeeze(0)
 
-        return embedding.cpu()
+        return embedding.float()
