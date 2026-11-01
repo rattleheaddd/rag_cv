@@ -16,8 +16,13 @@ def reciprocal_rank_fusion(semantic_results: list[dict], word_results: list[dict
         result["chunk_id"]: result.copy() for result in semantic_results + word_results
     }
 
+    remove_keys = ["similarity", "score"]
+    
     for chunk_id, score in rrf_scores.items():
+        results_by_id[chunk_id].pop(remove_keys[0], None)
+        results_by_id[chunk_id].pop(remove_keys[1], None)
         results_by_id[chunk_id]["rrf"] = score
+
 
     return sorted(
             results_by_id.values(),
@@ -33,7 +38,6 @@ if __name__ == "__main__":
 
 """
 results:
-'similarity': 0.5, 
 'page': 1, 
 'text': 'Hello world', 
 'chunk_id': 1, 

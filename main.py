@@ -8,8 +8,10 @@ from bm25_retriever import BM25Retriever
 from evaluation import evaluate, recall_at_k, reciprocal_rank
 from hybrid_retriever import HybridRetriever
 from semantic_retriever import InMemoryRetriever
-from qwen3embedder import Qwen3Embedder
 from sentence_transformers import SentenceTransformer
+from cross_encoder import CrossEncoderReranker
+from sentence_transformers import CrossEncoder
+import json
 
 if __name__ == "__main__":
     questions = [
@@ -53,42 +55,47 @@ if __name__ == "__main__":
         "What are the main limitations and open challenges in Document AI?",
         "What exact GPU hardware was used to train every model discussed in the paper?"
     ]
-    #model = SentenceTransformer("Qwen/Qwen3-Embedding-0.6B", device="cuda", local_files_only=True)
     model = AutoModel.from_pretrained("intfloat/multilingual-e5-small", device_map="cuda", local_files_only=True)
     tokenizer = AutoTokenizer.from_pretrained("intfloat/multilingual-e5-small", local_files_only=True)
     prep = TextPreparer(tokenizer=tokenizer, chunk_size=128, overlap=32)
     chunks = prep.prepare("docs/document.pdf")
     embed = E5Embedder(model=model, tokenizer=tokenizer, batch_size=16)
-    #embed = Qwen3Embedder(model)
     chunk_embeddings = embed.embed_chunks(chunks)
     bm25_retriever = BM25Retriever(chunks=chunks)
     semantic_retriever = InMemoryRetriever(chunks, chunk_embeddings)
     hybrid_retriever = HybridRetriever(semantic_retriever, bm25_retriever)
-    relevant_ids = [24, 25, 83, 84]
     llm = LocalModel(model="qwen3:4b-instruct")
 
-    import json
+    model_rerank = CrossEncoder(
+        "cross-encoder/ms-marco-MiniLM-L6-v2",
+        device="cuda",
+        local_files_only=True
+    )
 
+    reranker = CrossEncoderReranker(model_rerank)
     test_results = []
 
     for question in questions:
         question_embedding = embed.embed_query(question)
 
-        results = hybrid_retriever.search(
+        candidates = hybrid_retriever.search(
             question,
             question_embedding,
-            k=10,
+            k=5,
             candidate_k=20
         )
 
-        context = build_context(results)
-        answer = llm.generate_answer(context, question)
+        # results = reranker.rerank(
+        #     question,
+        #     candidates,
+        #     k=5
+        # )
 
         test_results.append({
             "question": question,
-            "retrieved_ids": [r["chunk_id"] for r in results],
-            "answer": answer
+            "retrieved_ids": [r["chunk_id"] for r in candidates],
+            "answer": llm.generate_answer(build_context(candidates), question)
         })
 
-    with open("evaluation_e5_hybrid.json", "w", encoding="utf-8") as f:
-        json.dump(test_results, f, ensure_ascii=False, indent=2)
+        with open("evaluation_e5_hybrid.json", "w", encoding="utf-8") as f:
+            json.dump(test_results, f, ensure_ascii=False, indent=2)
